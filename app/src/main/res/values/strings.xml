@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">BrainFuck IDE</string>
+    <string name="launcher_name">BrainFuck</string>
+</resources>
