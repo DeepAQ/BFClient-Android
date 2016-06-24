@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity">
+
+    <item
+        android:id="@+id/action_new"
+        android:title="New"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_open"
+        android:title="Open"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_save"
+        android:title="Save"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_save_24dp" />
+
+    <item
+        android:id="@+id/action_save"
+        android:title="Save As"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_save_24dp" />
+
+    <item
+        android:id="@+id/action_execute"
+        android:title="Execute"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_play_arrow_24dp" />
+
+    <item
+        android:id="@+id/action_exit"
+        android:title="Exit"
+        app:showAsAction="never" />
+
+</menu>
