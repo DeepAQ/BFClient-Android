@@ -9,4 +9,64 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="cn.imaq.brainfuck.LoginActivity">
 
+    <ImageView
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:id="@+id/imageLogin"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:src="@mipmap/ic_launcher" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Welcome to BrainFuck"
+        android:id="@+id/textWelcome"
+        android:textSize="28sp"
+        android:textColor="#000000"
+        android:fontFamily="sans-serif-thin"
+        android:layout_below="@+id/imageLogin"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:id="@+id/editHost"
+        android:fontFamily="sans-serif-light"
+        android:hint="Host"
+        android:text="http://localhost:8081"
+        android:layout_below="@+id/textWelcome"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editUsername"
+        android:fontFamily="sans-serif-light"
+        android:hint="Username"
+        android:layout_below="@+id/editHost"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:id="@+id/editPassword"
+        android:fontFamily="sans-serif-light"
+        android:hint="Password"
+        android:layout_below="@+id/editUsername"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login >"
+        android:id="@+id/buttonLogin"
+        android:layout_below="@+id/editPassword"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:onClick="onLoginAction" />
+
 </RelativeLayout>

@@ -11,7 +11,7 @@
 
     <item
         android:id="@+id/action_open"
-        android:title="Open"
+        android:title="Open …"
         app:showAsAction="never" />
 
     <item
@@ -21,16 +21,20 @@
         android:icon="@drawable/ic_save_24dp" />
 
     <item
-        android:id="@+id/action_save"
-        android:title="Save As"
-        app:showAsAction="ifRoom"
-        android:icon="@drawable/ic_save_24dp" />
+        android:id="@+id/action_saveas"
+        android:title="Save As …"
+        app:showAsAction="never" />
 
     <item
         android:id="@+id/action_execute"
-        android:title="Execute"
+        android:title="Execute …"
         app:showAsAction="ifRoom"
         android:icon="@drawable/ic_play_arrow_24dp" />
+
+    <item
+        android:id="@+id/action_logout"
+        android:title="Logout"
+        app:showAsAction="never" />
 
     <item
         android:id="@+id/action_exit"

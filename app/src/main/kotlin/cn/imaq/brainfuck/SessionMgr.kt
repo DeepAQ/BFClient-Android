@@ -19,12 +19,12 @@ object SessionMgr {
     private var sessionId = ""
 
     // User login & logout
-    fun login(username: String, password: String) {
-        loginWithPwdhash(username, hash(password))
+    fun isLoggedin(): Boolean {
+        return !sessionId.isEmpty()
     }
 
-    fun loginWithPwdhash(username: String, pwdhash: String) {
-        val serverResp = getURL("$host/user/login?username=$username&pwdhash=$pwdhash")
+    fun login(username: String, password: String) {
+        val serverResp = getURL("$host/user/login?username=$username&pwdhash=${hash(password)}")
         val jsonObj = JSONTokener(serverResp).nextValue() as JSONObject
         if (jsonObj.getInt("result") < 0)
             throw Exception(jsonObj.getString("errmsg"))

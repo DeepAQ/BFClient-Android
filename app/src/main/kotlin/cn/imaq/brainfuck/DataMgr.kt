@@ -7,20 +7,20 @@ import android.content.Context
  */
 object DataMgr {
     var username = ""
-    var pwdhash = ""
+    var password = ""
     var host = ""
 
     fun load(context: Context) {
         val pref = context.getSharedPreferences("BFData", Context.MODE_PRIVATE)
         username = pref.getString("username", "")
-        pwdhash = pref.getString("pwdhash", "")
+        password = pref.getString("pwdhash", "")
         host = pref.getString("host", "http://localhost:8081")
     }
 
     fun save(context: Context) {
         with (context.getSharedPreferences("BFData", Context.MODE_PRIVATE).edit()) {
             putString("username", username)
-            putString("pwdhash", pwdhash)
+            putString("pwdhash", password)
             putString("host", host)
             apply()
         }
