@@ -6,39 +6,39 @@
 
     <item
         android:id="@+id/action_new"
-        android:title="New"
+        android:title="@string/action_new"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/action_open"
-        android:title="Open …"
+        android:title="@string/action_open"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/action_save"
-        android:title="Save"
+        android:title="@string/action_save"
         app:showAsAction="ifRoom"
         android:icon="@drawable/ic_save_24dp" />
 
     <item
         android:id="@+id/action_saveas"
-        android:title="Save As …"
+        android:title="@string/action_saveas"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/action_execute"
-        android:title="Execute …"
+        android:title="@string/action_execute"
         app:showAsAction="ifRoom"
         android:icon="@drawable/ic_play_arrow_24dp" />
 
     <item
         android:id="@+id/action_logout"
-        android:title="Logout"
+        android:title="@string/action_logout"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/action_exit"
-        android:title="Exit"
+        android:title="@string/action_exit"
         app:showAsAction="never" />
 
 </menu>

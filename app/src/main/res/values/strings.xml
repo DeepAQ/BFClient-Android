@@ -1,4 +1,17 @@
 <resources>
     <string name="app_name">BrainFuck Client</string>
     <string name="launcher_name">BrainFuck</string>
+    <string name="action_new">New</string>
+    <string name="action_open">Open …</string>
+    <string name="action_save">Save</string>
+    <string name="action_saveas">Save As …</string>
+    <string name="action_execute">Execute …</string>
+    <string name="action_logout">Logout</string>
+    <string name="action_exit">Exit</string>
+    <string name="text_welcome">Welcome to BrainFuck</string>
+    <string name="edit_host">Host</string>
+    <string name="edit_username">Username</string>
+    <string name="edit_password">Password</string>
+    <string name="button_login"><![CDATA[Login >]]></string>
+    <string name="edit_code">( Your code here )</string>
 </resources>

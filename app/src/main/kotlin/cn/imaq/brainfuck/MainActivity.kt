@@ -1,7 +1,6 @@
 package cn.imaq.brainfuck
 
 import android.app.ProgressDialog
-import android.content.DialogInterface
 import android.content.Intent
 import android.os.AsyncTask
 import android.os.Bundle
@@ -14,13 +13,11 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import android.widget.*
+import android.widget.EditText
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
 import org.json.JSONArray
-import org.json.JSONObject
 import org.json.JSONTokener
-import java.util.*
 
 class MainActivity : AppCompatActivity() {
 

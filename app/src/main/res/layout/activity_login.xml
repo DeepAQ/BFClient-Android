@@ -21,7 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="Welcome to BrainFuck"
+        android:text="@string/text_welcome"
         android:id="@+id/textWelcome"
         android:textSize="28sp"
         android:textColor="#000000"
@@ -35,8 +35,7 @@
         android:layout_marginTop="20dp"
         android:id="@+id/editHost"
         android:fontFamily="sans-serif-light"
-        android:hint="Host"
-        android:text="http://localhost:8081"
+        android:hint="@string/edit_host"
         android:layout_below="@+id/textWelcome"
         android:layout_centerHorizontal="true" />
 
@@ -45,7 +44,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/editUsername"
         android:fontFamily="sans-serif-light"
-        android:hint="Username"
+        android:hint="@string/edit_username"
         android:layout_below="@+id/editHost"
         android:layout_centerHorizontal="true" />
 
@@ -55,14 +54,14 @@
         android:inputType="textPassword"
         android:id="@+id/editPassword"
         android:fontFamily="sans-serif-light"
-        android:hint="Password"
+        android:hint="@string/edit_password"
         android:layout_below="@+id/editUsername"
         android:layout_centerHorizontal="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Login >"
+        android:text="@string/button_login"
         android:id="@+id/buttonLogin"
         android:layout_below="@+id/editPassword"
         android:layout_alignParentRight="true"
