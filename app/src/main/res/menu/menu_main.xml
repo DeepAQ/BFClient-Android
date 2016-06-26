@@ -28,8 +28,7 @@
     <item
         android:id="@+id/action_execute"
         android:title="@string/action_execute"
-        app:showAsAction="ifRoom"
-        android:icon="@drawable/ic_play_arrow_24dp" />
+        app:showAsAction="never" />
 
     <item
         android:id="@+id/action_logout"

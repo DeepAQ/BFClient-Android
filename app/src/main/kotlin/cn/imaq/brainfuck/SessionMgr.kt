@@ -19,9 +19,7 @@ object SessionMgr {
     private var sessionId = ""
 
     // User login & logout
-    fun isLoggedin(): Boolean {
-        return !sessionId.isEmpty()
-    }
+    fun isLoggedin(): Boolean = sessionId.isNotEmpty()
 
     fun login(username: String, password: String) {
         val serverResp = getURL("$host/user/login?username=$username&pwdhash=${hash(password)}")
@@ -47,9 +45,7 @@ object SessionMgr {
     }
 
     // File I/O
-    fun getFileList(): String {
-        return getURL("$host/io/list?sessid=$sessionId")
-    }
+    fun getFileList(): String = getURL("$host/io/list?sessid=$sessionId")
 
     fun getFileContent(filename: String, version: String): String {
         val serverResp = getURL("$host/io/open?sessid=$sessionId&filename=$filename&version=$version")
@@ -89,9 +85,8 @@ object SessionMgr {
             connectTimeout = 5000
             readTimeout = 5000
         }
-        if (conn !is HttpsURLConnection && conn !is HttpURLConnection) {
+        if (conn !is HttpsURLConnection && conn !is HttpURLConnection)
             return ""
-        }
         return stringFromInputStream(conn.inputStream);
     }
 
@@ -114,9 +109,8 @@ object SessionMgr {
         val digest = MessageDigest.getInstance("SHA1")
         val bytes = digest.digest(str.toByteArray())
         var result = ""
-        for (b in bytes) {
+        for (b in bytes)
             result += Integer.toString((b.toInt() and 0xff) + 0x100, 16).substring(1)
-        }
         return result
     }
 }

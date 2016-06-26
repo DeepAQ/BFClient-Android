@@ -34,14 +34,17 @@ class MainActivity : AppCompatActivity() {
                 modified = !editCode.text.toString().equals(originalCode)
                 updateTitle()
             }
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            }
         })
 
         DataMgr.load(applicationContext)
-        if (!SessionMgr.isLoggedin()) {
+        if (!SessionMgr.isLoggedin())
             startActivity(Intent().setClass(this, LoginActivity::class.java))
-        }
         updateTitle()
     }
 
@@ -80,7 +83,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun newAction() {
-        checkSaved(View.OnClickListener{ v ->
+        checkSaved(View.OnClickListener { v ->
             editCode.text.clear()
             fileName = ""
             fileVersion = ""
@@ -90,7 +93,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun openAction() {
-        checkSaved(View.OnClickListener{ v ->
+        checkSaved(View.OnClickListener { v ->
             val pDialog = ProgressDialog(this)
             pDialog.setTitle("Please wait")
             pDialog.setMessage("Fetching file list …")
@@ -105,6 +108,7 @@ class MainActivity : AppCompatActivity() {
                     }
                     return null
                 }
+
                 override fun onPostExecute(result: Void?) {
                     super.onPostExecute(result)
                     pDialog.dismiss()
@@ -131,10 +135,10 @@ class MainActivity : AppCompatActivity() {
                                             .setTitle("Select a version :")
                                             .setItems(arrayVersions, { dialog2, i ->
                                                 val selectedVersion = arrayVersions[i]
-                                                val pDialog = ProgressDialog(this@MainActivity)
-                                                pDialog.setTitle("Please wait")
-                                                pDialog.setMessage("Opening file …")
-                                                pDialog.show()
+                                                val pDialog2 = ProgressDialog(this@MainActivity)
+                                                pDialog2.setTitle("Please wait")
+                                                pDialog2.setMessage("Opening file …")
+                                                pDialog2.show()
                                                 object : AsyncTask<Void, Void, Void>() {
                                                     override fun doInBackground(vararg params: Void?): Void? {
                                                         try {
@@ -147,11 +151,12 @@ class MainActivity : AppCompatActivity() {
                                                         }
                                                         return null
                                                     }
+
                                                     override fun onPostExecute(result: Void?) {
                                                         super.onPostExecute(result)
                                                         editCode.setText(originalCode)
                                                         updateTitle()
-                                                        pDialog.dismiss()
+                                                        pDialog2.dismiss()
                                                     }
                                                 }.execute()
                                             })
@@ -187,6 +192,7 @@ class MainActivity : AppCompatActivity() {
                     }
                     return null
                 }
+
                 override fun onPostExecute(result: Void?) {
                     super.onPostExecute(result)
                     updateTitle()
@@ -223,17 +229,17 @@ class MainActivity : AppCompatActivity() {
             val editInput = EditText(this)
             editInput.setText(savedInput)
             AlertDialog.Builder(this)
-                .setTitle("Input :")
-                .setView(editInput)
-                .setPositiveButton("Execute", { dialog, i ->
-                    dialog.dismiss()
-                    savedInput = editInput.text.toString()
-                    executeWithInput(editInput.text.toString())
-                })
-                .setNegativeButton("Cancel", { dialog, i ->
-                    dialog.dismiss()
-                })
-                .show()
+                    .setTitle("Input :")
+                    .setView(editInput)
+                    .setPositiveButton("Execute", { dialog, i ->
+                        dialog.dismiss()
+                        savedInput = editInput.text.toString()
+                        executeWithInput(editInput.text.toString())
+                    })
+                    .setNegativeButton("Cancel", { dialog, i ->
+                        dialog.dismiss()
+                    })
+                    .show()
         }
     }
 
@@ -242,7 +248,7 @@ class MainActivity : AppCompatActivity() {
         pDialog.setTitle("Please wait")
         pDialog.setMessage("Executing …")
         pDialog.show()
-        object: AsyncTask<Void, Void, Void>() {
+        object : AsyncTask<Void, Void, Void>() {
             var executeResult = ""
             override fun doInBackground(vararg params: Void?): Void? {
                 try {
@@ -255,22 +261,23 @@ class MainActivity : AppCompatActivity() {
                 }
                 return null
             }
+
             override fun onPostExecute(result: Void?) {
                 super.onPostExecute(result)
                 pDialog.dismiss()
                 AlertDialog.Builder(this@MainActivity)
-                    .setTitle("Result :")
-                    .setMessage(executeResult)
-                    .setPositiveButton("OK", { dialog, i ->
-                        dialog.dismiss()
-                    })
-                    .show()
+                        .setTitle("Result :")
+                        .setMessage(executeResult)
+                        .setPositiveButton("OK", { dialog, i ->
+                            dialog.dismiss()
+                        })
+                        .show()
             }
         }.execute()
     }
 
     fun logoutAction() {
-        checkSaved(View.OnClickListener{ v ->
+        checkSaved(View.OnClickListener { v ->
             SessionMgr.logout()
             DataMgr.password = ""
             DataMgr.save(applicationContext)
@@ -279,7 +286,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun exitAction() {
-        checkSaved(View.OnClickListener{ v ->
+        checkSaved(View.OnClickListener { v ->
             System.exit(0)
         })
     }
@@ -289,25 +296,25 @@ class MainActivity : AppCompatActivity() {
             listener.onClick(null)
         else
             AlertDialog.Builder(this)
-                .setTitle("Confirmation")
-                .setMessage("File not saved, save it?")
-                .setPositiveButton("Save", { dialog, i ->
-                    saveAction()
-                    dialog.dismiss()
-                })
-                .setNegativeButton("Discard", { dialog, i ->
-                    editCode.text.clear()
-                    fileName = ""
-                    fileVersion = ""
-                    modified = false
-                    updateTitle()
-                    dialog.dismiss()
-                    listener.onClick(null)
-                })
-                .setNeutralButton("Cancel", { dialog, i ->
-                    dialog.dismiss()
-                })
-                .show()
+                    .setTitle("Confirmation")
+                    .setMessage("File not saved, save it?")
+                    .setPositiveButton("Save", { dialog, i ->
+                        saveAction()
+                        dialog.dismiss()
+                    })
+                    .setNegativeButton("Discard", { dialog, i ->
+                        editCode.text.clear()
+                        fileName = ""
+                        fileVersion = ""
+                        modified = false
+                        updateTitle()
+                        dialog.dismiss()
+                        listener.onClick(null)
+                    })
+                    .setNeutralButton("Cancel", { dialog, i ->
+                        dialog.dismiss()
+                    })
+                    .show()
     }
 
 }

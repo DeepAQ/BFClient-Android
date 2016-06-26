@@ -18,7 +18,7 @@ class LoginActivity : AppCompatActivity() {
         editUsername.setText(DataMgr.username)
         editPassword.setText(DataMgr.password)
         if (DataMgr.host.isNotBlank() && DataMgr.username.isNotBlank() && DataMgr.password.isNotEmpty())
-            buttonLogin.callOnClick()
+            buttonLogin.performClick()
     }
 
     override fun onDestroy() {
@@ -30,35 +30,36 @@ class LoginActivity : AppCompatActivity() {
         val host = editHost.text.toString()
         val username = editUsername.text.toString()
         val password = editPassword.text.toString()
-        if (host.isBlank() || username.isBlank() || password.isEmpty()) {
+        if (host.isBlank() || username.isBlank() || password.isEmpty())
             Snackbar.make(v, "Please fill in all blanks!", Snackbar.LENGTH_SHORT).show()
-            return
-        }
-        val pDialog = ProgressDialog(this)
-        pDialog.setTitle("Please wait")
-        pDialog.setMessage("Logging in …")
-        pDialog.show()
-        object: AsyncTask<Void, Void, Void>() {
-            override fun doInBackground(vararg params: Void?): Void? {
-                try {
-                    SessionMgr.host = host
-                    SessionMgr.login(username, password)
-                    DataMgr.host = host
-                    DataMgr.username = username
-                    DataMgr.password = password
-                    DataMgr.save(applicationContext)
-                } catch (e: Exception) {
-                    Snackbar.make(v, e.toString(), Snackbar.LENGTH_LONG).show()
+        else {
+            val pDialog = ProgressDialog(this)
+            pDialog.setTitle("Please wait")
+            pDialog.setMessage("Logging in …")
+            pDialog.show()
+            object : AsyncTask<Void, Void, Void>() {
+                override fun doInBackground(vararg params: Void?): Void? {
+                    try {
+                        SessionMgr.host = host
+                        SessionMgr.login(username, password)
+                        DataMgr.host = host
+                        DataMgr.username = username
+                        DataMgr.password = password
+                        DataMgr.save(applicationContext)
+                    } catch (e: Exception) {
+                        Snackbar.make(v, e.toString(), Snackbar.LENGTH_LONG).show()
+                    }
+                    return null
                 }
-                return null
-            }
-            override fun onPostExecute(result: Void?) {
-                super.onPostExecute(result)
-                pDialog.dismiss()
-                if (SessionMgr.isLoggedin())
-                    finish()
-            }
-        }.execute()
+
+                override fun onPostExecute(result: Void?) {
+                    super.onPostExecute(result)
+                    pDialog.dismiss()
+                    if (SessionMgr.isLoggedin())
+                        finish()
+                }
+            }.execute()
+        }
     }
 
 }
